@@ -1,6 +1,8 @@
 # Homiq
 
-Homiq is a premium home management platform.
+Intelligent Real Estate Simulation Platform
+
+Homiq is a premium home management and real estate simulation platform.
 
 ## Setup
 
