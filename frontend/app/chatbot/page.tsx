@@ -125,29 +125,29 @@ export default function ChatbotPage() {
   };
 
   return (
-    <div className="min-h-screen gradient-bg flex flex-col">
+    <div className="min-h-screen bg-[#16171d] flex flex-col">
       <Navbar />
 
-      <div className="flex-1 flex flex-col pt-16 max-w-4xl mx-auto w-full px-4">
+      <div className="flex-1 flex flex-col pt-20 max-w-4xl mx-auto w-full px-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="py-6 text-center"
+          className="py-8 text-center"
         >
-          <div className="inline-flex items-center gap-2 mb-2">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
-              <Brain className="h-6 w-6 text-[#0a0a0f]" />
+          <div className="inline-flex items-center gap-3 mb-3">
+            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+              <Brain className="h-6 w-6 text-[#16171d]" />
             </div>
-            <h1 className="text-2xl font-bold text-gradient-gold">HomiqAI</h1>
+            <h1 className="text-2xl font-bold text-gradient-gold font-serif-display tracking-wide">HomiqAI</h1>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#a0a0b0] font-light">
             Your AI real estate assistant — powered by market intelligence
           </p>
         </motion.div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto space-y-4 pb-4">
+        <div className="flex-1 overflow-y-auto space-y-5 pb-4">
           <AnimatePresence>
             {messages.map((msg) => (
               <motion.div
@@ -157,19 +157,19 @@ export default function ChatbotPage() {
                 className={`flex gap-3 ${msg.role === "user" ? "justify-end" : ""}`}
               >
                 {msg.role === "assistant" && (
-                  <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shrink-0 mt-1">
-                    <Bot className="h-4 w-4 text-[#0a0a0f]" />
+                  <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shrink-0 mt-1">
+                    <Bot className="h-4 w-4 text-[#16171d]" />
                   </div>
                 )}
 
                 <div
-                  className={`max-w-[75%] rounded-2xl p-4 ${
+                  className={`max-w-[75%] rounded-2xl p-5 ${
                     msg.role === "user"
-                      ? "bg-gold/15 border border-gold/20 text-foreground"
+                      ? "bg-gold/10 border border-gold/15 text-foreground"
                       : "glass-card-strong text-foreground"
                   }`}
                 >
-                  <div className="text-sm whitespace-pre-wrap leading-relaxed prose prose-invert prose-sm max-w-none">
+                  <div className="text-sm whitespace-pre-wrap leading-relaxed">
                     {msg.content.split('\n').map((line, i) => (
                       <span key={i}>
                         {line.split(/(\*\*.*?\*\*)/).map((part, j) =>
@@ -187,12 +187,12 @@ export default function ChatbotPage() {
                   </div>
 
                   {msg.sources && msg.sources.length > 0 && (
-                    <div className="mt-3 pt-2 border-t border-border/30 flex flex-wrap gap-1">
+                    <div className="mt-3 pt-3 border-t border-white/[0.06] flex flex-wrap gap-1.5">
                       {msg.sources.map((source, i) => (
                         <Badge
                           key={i}
                           variant="outline"
-                          className="text-[10px] border-gold/20 text-gold/70"
+                          className="text-[10px] border-gold/15 text-gold/60 rounded-full"
                         >
                           📄 {source}
                         </Badge>
@@ -202,7 +202,7 @@ export default function ChatbotPage() {
                 </div>
 
                 {msg.role === "user" && (
-                  <div className="h-8 w-8 rounded-lg bg-blue-accent/20 flex items-center justify-center shrink-0 mt-1">
+                  <div className="h-9 w-9 rounded-xl bg-blue-accent/15 flex items-center justify-center shrink-0 mt-1">
                     <User className="h-4 w-4 text-blue-accent" />
                   </div>
                 )}
@@ -217,11 +217,11 @@ export default function ChatbotPage() {
               animate={{ opacity: 1 }}
               className="flex gap-3"
             >
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shrink-0">
-                <Bot className="h-4 w-4 text-[#0a0a0f]" />
+              <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shrink-0">
+                <Bot className="h-4 w-4 text-[#16171d]" />
               </div>
-              <div className="glass-card-strong rounded-2xl p-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="glass-card-strong rounded-2xl p-5">
+                <div className="flex items-center gap-2 text-sm text-[#a0a0b0]">
                   <Loader2 className="h-4 w-4 animate-spin text-gold" />
                   Analyzing your query...
                 </div>
@@ -237,15 +237,15 @@ export default function ChatbotPage() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5"
           >
             {SUGGESTIONS.map((suggestion, i) => (
               <button
                 key={i}
                 onClick={() => handleSend(suggestion)}
-                className="text-left p-3 rounded-xl glass-card text-xs text-muted-foreground hover:text-foreground hover:border-gold/20 transition-all"
+                className="text-left p-4 rounded-xl glass-card text-xs text-[#a0a0b0] hover:text-foreground hover:border-gold/15 transition-all duration-300"
               >
-                <Sparkles className="h-3 w-3 text-gold inline mr-1.5" />
+                <Sparkles className="h-3 w-3 text-gold inline mr-2" />
                 {suggestion}
               </button>
             ))}
@@ -253,8 +253,8 @@ export default function ChatbotPage() {
         )}
 
         {/* Input */}
-        <div className="pb-6">
-          <div className="glass-card-strong rounded-2xl p-2 glow-gold">
+        <div className="pb-8">
+          <div className="rounded-2xl p-2.5 bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] focus-within:border-gold/20 focus-within:glow-gold transition-all duration-500">
             <div className="flex items-center gap-2">
               <Input
                 value={input}
@@ -262,18 +262,18 @@ export default function ChatbotPage() {
                 onKeyDown={handleKeyDown}
                 placeholder="Ask about properties, market trends, or investment advice..."
                 disabled={isTyping}
-                className="border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus-visible:ring-0 text-sm"
+                className="border-0 bg-transparent text-foreground placeholder:text-[#a0a0b0]/60 focus-visible:ring-0 text-sm h-11"
               />
               <Button
                 onClick={() => handleSend()}
                 disabled={!input.trim() || isTyping}
-                className="btn-gold rounded-xl px-4 h-9 shrink-0"
+                className="btn-gold rounded-xl px-5 h-10 shrink-0"
               >
                 <Send className="h-4 w-4" />
               </Button>
             </div>
           </div>
-          <p className="text-center text-[10px] text-muted-foreground/50 mt-2">
+          <p className="text-center text-[10px] text-[#a0a0b0]/40 mt-3">
             HomiqAI provides estimates based on market data. Always verify with licensed professionals.
           </p>
         </div>

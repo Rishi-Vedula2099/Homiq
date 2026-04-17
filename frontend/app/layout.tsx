@@ -1,24 +1,36 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import { Providers } from "./providers";
 
-const geistSans = Geist({
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
+  variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Homiq — Intelligent Real Estate Platform",
+  title: "Homiq — Luxury Real Estate, Curated by AI",
   description:
-    "Discover your dream property with AI-powered insights, 3D walkthroughs, and smart recommendations. Premium real estate listings across India.",
-  keywords: ["real estate", "property", "AI", "3D viewer", "India", "buy", "rent"],
+    "Discover curated luxury properties powered by AI insights. Premium real estate listings with 3D walkthroughs, smart recommendations, and intelligent market analysis across India.",
+  keywords: [
+    "luxury real estate",
+    "premium property",
+    "AI real estate",
+    "3D property viewer",
+    "India luxury homes",
+    "penthouse",
+    "villa",
+    "smart home",
+  ],
 };
 
 export default function RootLayout({
@@ -29,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${playfair.variable} antialiased font-sans`}
       >
         <Providers>{children}</Providers>
       </body>
